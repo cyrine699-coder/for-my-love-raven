@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Raven 💗</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            background: #641f2a;
+        }
+
+        /* First screen */
+        #welcome {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 35px;
+            color: #f9e9df;
+            transition: opacity 0.8s ease;
+        }
+
+        h1 {
+            font-size: 42px;
+            font-weight: normal;
+            text-align: center;
+        }
+
+        button {
+            background: #a8b89a;
+            border: none;
+            padding: 18px 40px;
+            border-radius: 15px;
+            font-size: 20px;
+            color: #263528;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        /* Love rain screen */
+        #loveRain {
+            display: none;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            background: #641f2a;
+        }
+
+        .love {
+            position: absolute;
+            top: -100px;
+            color: #f9e9df;
+            font-size: 20px;
+            font-weight: bold;
+            white-space: nowrap;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            from {
+                transform: translateY(-100px) rotate(0deg);
+            }
+
+            to {
+                transform: translateY(110vh) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- First screen -->
+    <div id="welcome">
+        <h1>hi beautiful</h1>
+        <button onclick="startLoveRain()">press me</button>
+    </div>
+
+    <!-- Raining love screen -->
+    <div id="loveRain"></div>
+
+    <script>
+        function startLoveRain() {
+            document.getElementById("welcome").style.display = "none";
+            document.getElementById("loveRain").style.display = "block";
+
+            setInterval(() => {
+                const love = document.createElement("div");
+
+                love.className = "love";
+                love.innerText = "I LOVE YOU SO MUCH RAVEN";
+
+                love.style.left = Math.random() * 100 + "vw";
+                love.style.animationDuration = (3 + Math.random() * 5) + "s";
+                love.style.fontSize = (15 + Math.random() * 15) + "px";
+
+                document.getElementById("loveRain").appendChild(love);
+
+                setTimeout(() => {
+                    love.remove();
+                }, 9000);
+
+            }, 250);
+        }
+    </script>
+
+</body>
+</html>
